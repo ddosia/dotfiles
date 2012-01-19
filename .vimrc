@@ -1,3 +1,5 @@
+call pathogen#infect()
+
 set softtabstop=4
 set shiftwidth=4
 set autoindent
@@ -19,6 +21,9 @@ set history=1000
 filetype plugin on
 filetype indent on
 
+let g:erlangFold=1
+let erlang_completion_display_doc = 0
+
 " Allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
@@ -28,16 +33,14 @@ set ruler
 " Display incomplete commands
 set showcmd		
 
-" Turn on number vertical line
-"set number
-
 " Autoclose folds, when moving out of them
 set foldclose=all
 
 " Open all folds
 set foldenable
+
 " I like {{{ }}} folds
-let php_folding = 1
+" let php_folding = 1
 set foldmethod=syntax
 syntax enable
 "set foldmethod=indent
@@ -52,37 +55,22 @@ set scrolloff=7
 set novisualbell
 set t_vb=   
 
-" Enable mouse
-"set mouse=a
-"set mousemodel=popup
-
-" Default encoding
-"set termencoding=utf-8
-"set fileencodings=utf-8,cp1251,cp866,koi8-r
-
-" Hide the mouse when typing text
-"set mousehide
-
 " Status line format
-set statusline=%<%f%h%m%r\ %b\ %{&encoding}\ 0x\ \ %l,%c%V\ %P 
+" set statusline=%<%f%h%m%r\ %b\ %{&encoding}\ 0x\ \ %l,%c%V\ %P 
+set nocompatible " Disable vi-compatibility
+set laststatus=2 " Always show the statusline
+set t_Co=256 " Explicitly tell vim that the terminal has 256 colors
 
-hi Folded guibg=red guifg=Red cterm=bold ctermbg=DarkGrey ctermfg=lightblue
-hi FoldColumn guibg=grey78 gui=Bold guifg=DarkBlue
 
-" Change color scheme by day time
-let dayBegin = 8
-let dayScheme = "pyte"
-let nightBegin = 19
-let nightScheme = "rdark"
-let currentTime = str2nr(strftime("%H"))
+" hi Folded guibg=red guifg=Red cterm=bold ctermbg=DarkGrey ctermfg=lightblue
+" hi FoldColumn guibg=grey78 gui=Bold guifg=DarkBlue
 
-if currentTime < nightBegin && currentTime < dayBegin
-    silent execute "colorscheme " . nightScheme
-elseif currentTime > nightBegin && currentTime > dayBegin
-    silent execute "colorscheme " . nightScheme
-else
-    silent execute "colorscheme " . dayScheme
-endif
+" let dayScheme = "pyte"
+" let nightScheme = "rdark"
+" silent execute "colorscheme " . nightScheme
 
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
+" color slate
+" set background=light
+let g:solarized_termcolors=256
+set background=dark
+colorscheme solarized
