@@ -35,6 +35,7 @@
         Bundle "garbas/vim-snipmate"
 
         Bundle "PreciseJump"
+        Bundle "ack.vim"
 
 
     filetype plugin indent on     " required!
