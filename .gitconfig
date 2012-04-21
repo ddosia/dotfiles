@@ -1,0 +1,14 @@
+[core]
+    editor = vim
+[user]
+    name = Churikov Daniil
+    email = ddosia@gmail.com
+[github]
+    user = ddosia
+[color]
+    branch = auto
+    diff = auto
+    interactive = auto
+    status = auto
+[merge]
+    tool = meld
