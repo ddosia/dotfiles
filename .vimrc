@@ -39,57 +39,14 @@
 
 
     filetype plugin indent on     " required!
-    " Brief help
-    " :BundleList          - list configured bundles
-    " :BundleInstall(!)    - install(update) bundles
-    " :BundleSearch(!) foo - search(or refresh cache first) for foo
-    " :BundleClean(!)      - confirm(or auto-ap prove) removal of unused bundles
-    " see :h vundle for more details or wiki for FAQ
-
-
-
 
 " Interface
-    set nonumber                  " Не показываем нумерацию строк
-                                  " Во-первых, номер текущей строки всегда
-                                  " есть в statusline, во-вторых, всегда можно
-                                  " быстро перейти к нужной строке набрав :1
-                                  " где 1 — номер строки.
-
-    set encoding=utf-8            " character encoding used inside Vim.
-    set fileencodings=utf-8,cp1251 " Возможные кодировки файлов и последовательность определения
-    set wildmode=list:longest,full " Автодополнение на манер zsh
-    set wildmenu " Саджест по <tab> в командной строке
-                 " When 'wildmenu' is on, command-line completion operates in an enhanced
-                 " mode.  On pressing 'wildchar' (usually <Tab>) to invoke completion,
-                 " the possible matches are shown just above the command line, with the
-                 " first match highlighted (overwriting the status line, if there is
-                 " one).
-    set wildignore+=.hg,.git,.svn " Version control
-    set wildignore+=*.DS_Store    " OSX bullshit
-    set wildignore+=*.pyc         " Python byte code
-    set title    " window title
-                 " the title of the window will be set to the value of 'titlestring'
-                 " (if it is not empty), or to: filename [+=-] (path) - VIM
-    set showcmd  " Show (partial) command in the last line of the screen
-                 " Set this option off if your terminal is slow.
-                 " In Visual mode the size of the selected area is shown:
-                 " - When selecting characters within a line, the number of characters.
-                 "   If the number of bytes is different it is also displayed: "2-6"
-                 "   means two characters and six bytes.
-                 " - When selecting more than one line, the number of lines.
-                 " - When selecting a block, the size in screen characters:
-                 "   {lines}x{columns}.
-    " set scrolljump=5
-    " set scrolloff=3
     set scrolloff=999       " focus mode like in Writer app http://www.iawriter.com/
-    set showtabline=1       " Показывать вкладки табов только когда их больше одной
-    set list                " display unprintable characters
     set wrap                " Включаем перенос строк (http://vimcasts.org/episodes/soft-wrapping-text/)
     if version >= 703
         set colorcolumn=80 " Подсвечиваем 80 столбец
     end
-    set textwidth=80
+    " set textwidth=80
     set formatoptions-=o    " dont continue comments when pushing o/O
     set linebreak           " Перенос не разрывая слов
     set autoindent          " Копирует отступ от предыдущей строки
@@ -100,8 +57,6 @@
     set softtabstop=4
     set linespace=1         " add some line space for easy reading
     set cursorline          " Подсветка строки, в которой находится в данный момент курсор
-    set gcr=n:blinkon0      " Отключаем мигание курсора в MacVim. Больше никакого стресса.
-    set guioptions=         " Вырубаем все лишнее из ГУИ, если надо потогглить см <F6>
     set t_Co=256            " Кол-во цветов
     set guicursor=          " Отключаем мигание курсора
     set splitbelow          " новый сплит будет ниже текущего :sp
@@ -236,23 +191,13 @@
 " Environment
     set history=1000 " store lots of :cmdline history
     " Backup и swp файлы
-        set backupdir=~/.vimi/bac//,/tmp " Директория для backup файлов
-        set directory=~/.vimi/swp//,/tmp " Директория для swp файлов
+        set backupdir=~/.vim/back/ " Директория для backup файлов
+        set directory=~/.vim/swp/ " Директория для swp файлов
 
     " Загрузка предыдущей сессии
         set viminfo='10,\"100,:20,%,n~/.viminfo
         " Устанавливаем курсор в файле на место, где он был при закрытии этого файла
         au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
-
-    " AutoReload .vimrc
-        " from http://vimcasts.org/episodes/updating-your-vimrc-file-on-the-fly/
-        " Source the vimrc file after saving it
-        if has("autocmd")
-          autocmd! bufwritepost .vimrc source $MYVIMRC
-        endif
-
-    " Auto change the directory to the current file I'm working on
-        " autocmd BufEnter * lcd %:p:h
 
 " Плагины
 
