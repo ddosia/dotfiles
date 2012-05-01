@@ -5,6 +5,7 @@
     email = ddosia@gmail.com
 [github]
     user = ddosia
+    token = 6aba27e29caae6acb03ab1e754816eb9
 [color]
     branch = auto
     diff = auto
@@ -12,3 +13,5 @@
     status = auto
 [merge]
     tool = meld
+[alias]
+    glog = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
