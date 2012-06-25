@@ -43,15 +43,12 @@
 
 " Interface
     set scrolloff=999       " focus mode like in Writer app http://www.iawriter.com/
-    set wrap                " Включаем перенос строк (http://vimcasts.org/episodes/soft-wrapping-text/)
-    if version >= 703
-        set colorcolumn=80 " Подсвечиваем 80 столбец
-    end
+    set colorcolumn=80 " Подсвечиваем 80 столбец
     " set textwidth=80
-    set formatoptions-=o    " dont continue comments when pushing o/O
+    "set formatoptions-=o    " dont continue comments when pushing o/O
     set linebreak           " Перенос не разрывая слов
     set autoindent          " Копирует отступ от предыдущей строки
-    set smartindent         " Включаем 'умную' автоматическую расстановку отступов
+    "set smartindent         " Включаем 'умную' автоматическую расстановку отступов
     set expandtab
     set shiftwidth=4        " Размер сдвига при нажатии на клавиши << и >>
     set tabstop=4           " Размер табуляции
@@ -144,9 +141,9 @@
 " Search
     set incsearch   " При поиске перескакивать на найденный текст в процессе набора строки
     set hlsearch    " Включаем подсветку выражения, которое ищется в тексте
-    set ignorecase  " Игнорировать регистр букв при поиске
-    set smartcase   " Override the 'ignorecase' if the search pattern contains upper case characters
-    autocmd CursorMoved * silent! exe printf("match Search /\\<%s\\>/", expand('<cword>'))
+    "set ignorecase  " Игнорировать регистр букв при поиске
+    "set smartcase   " Override the 'ignorecase' if the search pattern contains upper case characters
+	autocmd CursorMoved * silent! exe printf("match Search /\\<%s\\>/", expand('<cword>'))
 
 " Шорткаты
         nmap <C-a> <Nop>
