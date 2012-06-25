@@ -37,6 +37,7 @@
         Bundle "PreciseJump"
         Bundle "ack.vim"
 
+        Bundle "git://github.com/yuratomo/w3m.vim.git"
 
     filetype plugin indent on     " required!
 
@@ -145,7 +146,7 @@
     set hlsearch    " Включаем подсветку выражения, которое ищется в тексте
     set ignorecase  " Игнорировать регистр букв при поиске
     set smartcase   " Override the 'ignorecase' if the search pattern contains upper case characters
-
+    autocmd CursorMoved * silent! exe printf("match Search /\\<%s\\>/", expand('<cword>'))
 
 " Шорткаты
         nmap <C-a> <Nop>
