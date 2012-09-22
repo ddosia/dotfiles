@@ -37,8 +37,6 @@
         Bundle "PreciseJump"
         Bundle "ack.vim"
 
-        Bundle "git://github.com/yuratomo/w3m.vim.git"
-
     filetype plugin indent on     " required!
 
 " Interface
@@ -134,7 +132,7 @@
         set foldcolumn=0        " Ширина строки где располагается фолдинг
         set foldmethod=syntax   " Фолдинг по отступам
         set foldnestmax=10      " Глубина фолдинга 10 уровней
-        set foldenable        " Не фолдить по умолчанию
+        set foldenable!         " Не фолдить по умолчанию
         set foldlevel=1         " This is just what i use
         set fillchars="fold: "  " remove the extrafills --------
 
@@ -143,7 +141,7 @@
     set hlsearch    " Включаем подсветку выражения, которое ищется в тексте
     "set ignorecase  " Игнорировать регистр букв при поиске
     "set smartcase   " Override the 'ignorecase' if the search pattern contains upper case characters
-	autocmd CursorMoved * silent! exe printf("match Search /\\<%s\\>/", expand('<cword>'))
+	"autocmd CursorMoved * silent! exe printf("match Search /\\<%s\\>/", expand('<cword>')) " Подсвечивать слово под курсором
 
 " Шорткаты
         nmap <C-a> <Nop>
