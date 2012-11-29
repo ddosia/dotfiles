@@ -177,8 +177,10 @@
         imap     <c-a> <c-o>^
 
     " Переключение вкладки по табу
-        nmap <Tab> gt
-        nmap <S-Tab> gT
+         nmap <C-l> gt
+         nmap <C-h> gT
+        " nmap <Tab> gt
+        " nmap <S-Tab> gT
 
     " Ремапим русские символы
         set langmap=ёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕHГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;`qwertyuiop[]asdfghjkl\\;'zxcvbnm\\,.~QWERTYUIOP{}ASDFGHJKL:\\"ZXCVBNM<>
