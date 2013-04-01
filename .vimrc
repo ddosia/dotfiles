@@ -25,17 +25,9 @@
     " Interface
         Bundle 'git://github.com/altercation/vim-colors-solarized.git'
         Bundle 'git://github.com/scrooloose/nerdtree.git'
-        Bundle 'git://github.com/ervandew/supertab.git'
         Bundle 'https://github.com/jimenezrick/vimerl'
 
-        " snipmate deps
-        Bundle "MarcWeber/vim-addon-mw-utils"
-        Bundle "tomtom/tlib_vim"
-        Bundle "snipmate-snippets"
-        Bundle "garbas/vim-snipmate"
-
         Bundle "PreciseJump"
-        Bundle "ack.vim"
 
     filetype plugin indent on     " required!
 
@@ -115,20 +107,6 @@
         set statusline+=%<                   " where truncate if line too long
         set statusline+=\ \ CurDir:%{CurDir()}
 
-    " Проверка орфографии
-        if version >= 700
-            set spell spelllang= 
-            set nospell " По умолчанию проверка орфографии выключена
-            menu Spell.off :setlocal spell spelllang= <cr>
-            menu Spell.Russian+English :setlocal spell spelllang=ru,en <cr>
-            menu Spell.Russian :setlocal spell spelllang=ru <cr>
-            menu Spell.English :setlocal spell spelllang=en <cr>
-            menu Spell.-SpellControl- :
-            menu Spell.Word\ Suggest<Tab>z= z=
-            menu Spell.Previous\ Wrong\ Word<Tab>[s [s
-            menu Spell.Next\ Wrong\ Word<Tab>]s ]s
-        endif
-
         set foldcolumn=0        " Ширина строки где располагается фолдинг
         set foldmethod=syntax   " Фолдинг по отступам
         set foldnestmax=10      " Глубина фолдинга 10 уровней
@@ -176,11 +154,8 @@
         cnoremap <c-a> <home>
         imap     <c-a> <c-o>^
 
-    " Переключение вкладки по табу
-         nmap <C-l> gt
-         nmap <C-h> gT
-        " nmap <Tab> gt
-        " nmap <S-Tab> gT
+        nmap <C-l> gt
+        nmap <C-h> gT
 
     " Ремапим русские символы
         set langmap=ёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕHГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;`qwertyuiop[]asdfghjkl\\;'zxcvbnm\\,.~QWERTYUIOP{}ASDFGHJKL:\\"ZXCVBNM<>
@@ -233,3 +208,5 @@
         nnoremap <silent> sq     :FufQuickfix<CR>
         nnoremap <silent> sy     :FufLine<CR>
 
+
+filetype plugin indent on
