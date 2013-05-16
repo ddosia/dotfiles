@@ -39,4 +39,7 @@ else
      start_agent;
 fi
 
+PATH=$PATH:$HOME/devel/bin
+
 #alias gr='grep -R --color=always'
+. $HOME/devel/tools/otp/R15B02/activate
