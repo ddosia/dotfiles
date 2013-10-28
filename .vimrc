@@ -26,6 +26,7 @@
         Bundle 'git://github.com/altercation/vim-colors-solarized.git'
         Bundle 'git://github.com/scrooloose/nerdtree.git'
         Bundle 'https://github.com/jimenezrick/vimerl'
+        Bundle 'git://github.com/ervandew/supertab.git'
 
         Bundle "PreciseJump"
 
