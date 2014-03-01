@@ -40,6 +40,8 @@ set splitright
 set incsearch
 set hlsearch
 
+set backupdir=~/.vim/back/
+set directory=~/.vim/swp/
 
 " Keys
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
