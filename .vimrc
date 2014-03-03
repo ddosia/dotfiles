@@ -56,6 +56,8 @@ imap     <c-e> <c-o>$
 cnoremap <c-a> <home>
 imap     <c-a> <c-o>^
 
+nmap <C-l> gt
+nmap <C-h> gT
 
 " Status line
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
