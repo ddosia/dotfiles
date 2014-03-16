@@ -15,6 +15,8 @@ Bundle 'git://github.com/scrooloose/nerdtree.git'
 Bundle 'https://github.com/jimenezrick/vimerl'
 Bundle 'git://github.com/ervandew/supertab.git'
 Bundle 'LaTeX-Box-Team/LaTeX-Box'
+Bundle 'def-lkb/ocp-indent-vim'
+Bundle 'scrooloose/syntastic.git'
 
 " FuzzyFinder
 Bundle 'L9'
@@ -34,6 +36,7 @@ set autoindent
 set expandtab
 set tabstop=4
 set softtabstop=4
+set shiftwidth=4
 
 set splitbelow
 set splitright
@@ -140,3 +143,15 @@ let g:fuf_mrucmd_maxItem = 400
 nnoremap <silent> sk     :FufCoverageFile<CR>
 nnoremap <silent> sq     :FufQuickfix<CR>
 nnoremap <silent> sy     :FufLine<CR>
+
+
+" Ocaml
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let s:ocamlmerlin=substitute(system('opam config var share'),'\n$','','''') .  "/ocamlmerlin"
+
+" Merlin
+execute "set rtp+=".s:ocamlmerlin."/vim"
+
+" Syntastic
+let g:syntastic_ocaml_use_ocamlc = 1
+let g:syntastic_ocaml_checkers = ['merlin']
