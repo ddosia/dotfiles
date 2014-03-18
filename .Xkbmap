@@ -1,0 +1,2 @@
+-layout us,ru
+-option grp:rctrl_toggle,grp_led:scroll,compose:menu,ctrl:swapcaps
