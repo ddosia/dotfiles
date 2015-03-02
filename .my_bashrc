@@ -1,6 +1,9 @@
 alias tmux="TERM=screen-256color tmux"
 export EDITOR=vim
-PS1='\[\e[0;32m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[0m\] '
+
+# root's PS1
+#PS1='\[\e[0;45m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[0m\] '
+PS1='\[\e[0;46m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[0m\] '
 
 if [[ -f "$HOME/.ssh/environment" ]]; then
     SSH_ENV="$HOME/.ssh/environment"
@@ -28,3 +31,7 @@ if [[ -f "$HOME/.ssh/environment" ]]; then
 fi
 
 PATH=$PATH:$HOME/devel/bin
+
+setxkbmap -layout "us,ru" -option "grp:rctrl_toggle,grp_led:scroll,compose:menu,ctrl:swapcaps"
+
+. $HOME/devel/otp/R16B03-1/activate
