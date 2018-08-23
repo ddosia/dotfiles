@@ -1,29 +1,9 @@
-" Vundle
+" Pathogen
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+execute pathogen#infect()
+syntax on
 set nocompatible              " be iMproved
-filetype off                  " required!
-
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-" let Vundle manage Vundle
-" required!
-Bundle 'gmarik/vundle'
-Bundle 'tpope/vim-sensible'
-Bundle 'git://github.com/altercation/vim-colors-solarized.git'
-Bundle 'git://github.com/scrooloose/nerdtree.git'
-Bundle 'https://github.com/jimenezrick/vimerl'
-Bundle 'git://github.com/ervandew/supertab.git'
-Bundle 'LaTeX-Box-Team/LaTeX-Box'
-Bundle 'def-lkb/ocp-indent-vim'
-Bundle 'scrooloose/syntastic.git'
-
-" FuzzyFinder
-Bundle 'L9'
-Bundle 'FuzzyFinder'
-
-filetype plugin indent on     " required!
-
+filetype plugin indent on
 
 " General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -100,13 +80,12 @@ set statusline+=\ \ CurDir:%{CurDir()}
 " Solarized
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-syntax enable
 let g:solarized_termcolors=256
 set background=dark
 try
     colorscheme solarized
 catch /^Vim\%((\a\+)\)\=:E185/
-    echo "Solarized theme not found. Run :BundleInstall"
+    echo "Solarized theme not found. Run :Helptags"
 endtry
 
 try

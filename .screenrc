@@ -1,7 +1,0 @@
-vbell off
-windows
-startup_message off
-hardstatus alwayslastline "%H %c  %=[ %w ] "
-defscrollback 10000
-sorendition Wb
-nethack on
