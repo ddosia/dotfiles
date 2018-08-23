@@ -22,3 +22,6 @@
 [submodule ".vim/bundle/vim-erlang-runtime"]
 	path = .vim/bundle/vim-erlang-runtime
 	url = https://github.com/vim-erlang/vim-erlang-runtime.git
+[submodule ".vim/bundle/lightline.vim"]
+	path = .vim/bundle/lightline.vim
+	url = https://github.com/itchyny/lightline.vim

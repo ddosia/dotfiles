@@ -5,6 +5,7 @@ syntax on
 set nocompatible              " be iMproved
 filetype plugin indent on
 
+
 " General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -94,6 +95,9 @@ catch /^Vim\%((\a\+)\)\=:E117/
     " :(
 endtry
 
+" LightLine
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set noshowmode
 
 " NERDTree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -122,15 +126,3 @@ let g:fuf_mrucmd_maxItem = 400
 nnoremap <silent> sk     :FufCoverageFile<CR>
 nnoremap <silent> sq     :FufQuickfix<CR>
 nnoremap <silent> sy     :FufLine<CR>
-
-
-" Ocaml
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let s:ocamlmerlin=substitute(system('opam config var share'),'\n$','','''') .  "/ocamlmerlin"
-
-" Merlin
-execute "set rtp+=".s:ocamlmerlin."/vim"
-
-" Syntastic
-let g:syntastic_ocaml_use_ocamlc = 1
-let g:syntastic_ocaml_checkers = ['merlin']
