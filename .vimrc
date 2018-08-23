@@ -109,6 +109,8 @@ nnoremap <silent> sk     :FufCoverageFile<CR>
 nnoremap <silent> sq     :FufQuickfix<CR>
 nnoremap <silent> sy     :FufLine<CR>
 
+" GitGutter
+set updatetime=100 " 100 ms. Default is 4s
 
 " Erlang
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
