@@ -126,3 +126,10 @@ let g:fuf_mrucmd_maxItem = 400
 nnoremap <silent> sk     :FufCoverageFile<CR>
 nnoremap <silent> sq     :FufQuickfix<CR>
 nnoremap <silent> sy     :FufLine<CR>
+
+
+" Erlang
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-erlang-omnicomplete
+let g:erlang_completion_preview_help = 0
+set cot-=preview
