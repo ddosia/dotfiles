@@ -8,7 +8,6 @@ filetype plugin indent on
 
 " General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 set scrolloff=999       " focus mode like in Writer app http://www.iawriter.com/
 set colorcolumn=80
 set cursorline
@@ -28,6 +27,11 @@ set hlsearch
 set backupdir=~/.vim/back/
 set directory=~/.vim/swp/
 
+" flagging unnecessary whitespaces
+highlight BadWhitespace ctermbg=red guibg=darkred
+match BadWhitespace /\s\+$/
+
+
 " Keys
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 imap <C-h> <C-o>h
@@ -46,7 +50,6 @@ nmap <C-h> gT
 
 " Solarized
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 let g:solarized_termcolors=256
 set background=dark
 try
@@ -60,6 +63,7 @@ try
 catch /^Vim\%((\a\+)\)\=:E117/
     " :(
 endtry
+
 
 " LightLine
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -75,11 +79,27 @@ nnoremap <silent> sk     :FufCoverageFile<CR>
 nnoremap <silent> sq     :FufQuickfix<CR>
 nnoremap <silent> sy     :FufLine<CR>
 
+
 " GitGutter
 set updatetime=100 " 100 ms. Default is 4s
+
 
 " Erlang
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-erlang-omnicomplete
 let g:erlang_completion_preview_help = 0
 set cot-=preview
+
+
+" Python
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" PEP 8
+autocmd BufWritePost *.py call Flake8()
+au BufNewFile,BufRead *.py
+    \ set tabstop=4       |
+    \ set softtabstop=4   |
+    \ set shiftwidth=4    |
+    \ set textwidth=79    |
+    \ set expandtab       |
+    \ set autoindent      |
+    \ set fileformat=unix
