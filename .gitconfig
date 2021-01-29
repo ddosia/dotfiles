@@ -11,7 +11,7 @@
     interactive = auto
     status = auto
 [merge]
-    tool = meld
+    tool = vimdiff
 [alias]
     glog = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 [pull]
