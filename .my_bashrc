@@ -1,4 +1,7 @@
 #alias tmux="TERM=screen-256color tmux"
+## switch "~" and "±" on mac's KB
+# hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000035,"HIDKeyboardModifierMappingDst":0x700000064},{"HIDKeyboardModifierMappingSrc":0x700000064,"HIDKeyboardModifierMappingDst":0x700000035}]}'
+
 export EDITOR=vim
 
 # root's PS1
@@ -31,11 +34,6 @@ if [[ -f "$HOME/.ssh/environment" ]]; then
 fi
 
 PATH=$PATH:$HOME/devel/bin
-
-#setxkbmap -layout "us,ru" -option "grp:rctrl_toggle,grp_led:scroll,compose:menu,ctrl:swapcaps"
-
-#. $HOME/devel/otp/R16B03-1/activate
-
 ## pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"

@@ -14,3 +14,5 @@
     tool = meld
 [alias]
     glog = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+[pull]
+	ff = only

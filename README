@@ -1,1 +1,23 @@
 Some config files for variety programs
+
+
+# Mac Installation
+
+```shell
+brew install git tmux vim bash bash-completion htop wget curl colordiff
+brew install coreutils findutils gnu-tar gnu-sed gawk gnutls gnu-indent gnu-getopt grep
+brew install autoconf automake libtool
+
+cd dotfiles
+git submodule init && git submodule update
+
+for cfg in ".gitconfig .kerl* .ssh .tmux* .vim*"; do
+    cp -a $cfg ~/
+done
+
+brew install python pipenv
+brew install kerl
+
+kerl update releases
+```
+
