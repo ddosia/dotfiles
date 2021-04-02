@@ -3,7 +3,7 @@
 ## SUBMODULES
 echo "Initializing submodules"
 git submodule update --init
-for s in $( grep '\[submodule' .git/config | sed 's/^\[submodule "\(.*\)"\]$/\1/g' | sort ); do
+for s in $( git config --file .gitmodules --name-only --get-regexp "path$" | sed 's/submodule.\(.*\).path/\1/' ); do
     mkdir -p "$(dirname "${HOME}/${s}")"
     ln -frTvs $s ~/$s
 done;
