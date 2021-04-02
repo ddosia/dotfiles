@@ -46,3 +46,6 @@
 [submodule "devel/erlang/kerl"]
 	path = devel/erlang/kerl
 	url = git@github.com:kerl/kerl.git
+[submodule "devel/erlang/rebar3"]
+	path = devel/erlang/rebar3
+	url = git@github.com:erlang/rebar3.git
