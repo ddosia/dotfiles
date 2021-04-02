@@ -69,15 +69,4 @@ case "$(uname -s)" in
     Darwin*) mac_install;;
 esac
 
-
-################
-### SUBMODULES
-echo "Initializing submodules"
-git submodule update --init
-for s in $( git config --file .gitmodules --name-only --get-regexp "path$" | sed 's/submodule.\(.*\).path/\1/' ); do
-    mkdir -p "$(dirname "${HOME}/${s}")"
-    ln -frTvs $s ~/$s
-done;
-echo ""
-###
-################
+./install.fs.sh
