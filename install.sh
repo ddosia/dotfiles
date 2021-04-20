@@ -19,6 +19,9 @@ function mac_install {
     echo ""
     mac_pyenv_install
     echo ""
+    brew install awscli
+    echo ""
+    mac_terraform_install
 }
 
 ################
@@ -60,6 +63,13 @@ function ubuntu_terraform_install {
     sudo apt-get update && sudo apt-get install terraform
     terraform -install-autocomplete
 }
+
+function mac_terraform_install {
+    echo "Please read terraform installation notes on https://learn.hashicorp.com/tutorials/terraform/install-cli"
+    brew tap hashicorp/tap
+    brew install hashicorp/tap/terraform
+    terraform -install-autocomplete
+}
 ###
 ################
 
@@ -68,5 +78,14 @@ case "$(uname -s)" in
     Linux*) ubuntu_install;;
     Darwin*) mac_install;;
 esac
+
+################
+### common install
+python -m pip install -U pip
+python -m pip install -U matplotlib
+python -m pip install -U pandas
+python -m pip install -U jupyter
+###
+################
 
 ./install.fs.sh
