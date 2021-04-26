@@ -60,7 +60,7 @@ function ubuntu_terraform_install {
     echo "Please read terraform installation notes on https://learn.hashicorp.com/tutorials/terraform/install-cli"
     sudo curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
     sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
-    sudo apt-get update && sudo apt-get install terraform
+    sudo apt-get update && sudo apt-get install terraform packer
     terraform -install-autocomplete
 }
 
@@ -69,6 +69,8 @@ function mac_terraform_install {
     brew tap hashicorp/tap
     brew install hashicorp/tap/terraform
     terraform -install-autocomplete
+
+    brew install hashicorp/tap/packer
 }
 ###
 ################
