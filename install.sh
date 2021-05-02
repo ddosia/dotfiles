@@ -83,6 +83,10 @@ esac
 
 ################
 ### common install
+PY_V=$(pyenv install --list | grep -v - | grep -v b | tail -1)
+pyenv install ${PY_V}
+pyenv global ${PY_V}
+
 python -m pip install -U pip
 python -m pip install -U matplotlib
 python -m pip install -U pandas
