@@ -45,7 +45,7 @@
 	url = https://github.com/tpope/vim-pathogen.git
 [submodule "devel/erlang/kerl"]
 	path = devel/erlang/kerl
-	url = git@github.com:kerl/kerl.git
+	url = https://github.com/kerl/kerl.git
 [submodule "devel/erlang/rebar3"]
 	path = devel/erlang/rebar3
-	url = git@github.com:erlang/rebar3.git
+	url = https://github.com/erlang/rebar3.git
