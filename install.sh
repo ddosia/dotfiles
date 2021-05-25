@@ -16,7 +16,7 @@ function ubuntu_install {
 ### dev essentials
 function ubuntu_dev_essentials_install {
     sudo apt install build-essential autoconf automake gdb libffi-dev zlib1g-dev libssl-dev
-    sudo apt install git tmux vim htop colordiff
+    sudo apt install git tmux vim htop colordiff jq
 }
 ###
 ################
