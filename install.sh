@@ -10,6 +10,8 @@ function ubuntu_install {
     sudo apt install awscli
     echo ""
     ubuntu_terraform_install
+    echo ""
+    ubuntu_docker_install
 }
 
 ################
@@ -43,6 +45,23 @@ function ubuntu_terraform_install {
 ###
 ################
 
+################
+### docker
+function ubuntu_docker_install {
+    ## https://docs.docker.com/engine/install/ubuntu/
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+    echo \
+          "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+            $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    sudo apt-get update
+    sudo apt-get install docker-ce docker-ce-cli containerd.io
+    sudo usermod -aG docker $USER
+    sudo systemctl enable docker.service
+    sudo systemctl enable containerd.service
+    echo "to check the docker work run: 'docker run hello-world'; You may need to logout/login for $USER to gain necessary permissions."
+}
+###
+################
 
 case "$(uname -s)" in
     Linux*) ubuntu_install;;
