@@ -34,7 +34,11 @@ if [[ -f "$HOME/.ssh/environment" ]]; then
 fi
 
 PATH=$PATH:$HOME/devel/bin
+
 ## pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+
+## terraform
+PATH="$HOME/.tfenv/bin:$PATH"

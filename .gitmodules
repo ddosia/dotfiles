@@ -49,3 +49,6 @@
 [submodule "devel/erlang/rebar3"]
 	path = devel/erlang/rebar3
 	url = https://github.com/erlang/rebar3.git
+[submodule ".tfenv"]
+	path = .tfenv
+	url = https://github.com/tfutils/tfenv.git

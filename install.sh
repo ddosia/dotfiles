@@ -36,12 +36,17 @@ function ubuntu_pyenv_install {
 ################
 ### terraform
 function ubuntu_terraform_install {
-    echo "Please read terraform installation notes on https://learn.hashicorp.com/tutorials/terraform/install-cli"
-    sudo curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
-    sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
-    sudo apt-get update && sudo apt-get install terraform packer
-    terraform -install-autocomplete
+    tfenv install latest
+    tfenv use latest
 }
+
+# function ubuntu_terraform_install {
+#     echo "Please read terraform installation notes on https://learn.hashicorp.com/tutorials/terraform/install-cli"
+#     sudo curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+#     sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+#     sudo apt-get update && sudo apt-get install terraform packer
+#     terraform -install-autocomplete
+# }
 ###
 ################
 
