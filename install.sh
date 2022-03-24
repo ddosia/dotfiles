@@ -74,7 +74,7 @@ esac
 
 ################
 ### common install
-PY_V=$(pyenv install --list | grep -v - | grep -v b | tail -1)
+PY_V=$( pyenv install --list | grep -v - | grep "[[:space:]]\+3\.[[:digit:]]\+\.[[:digit:]]\+$" | tail -1 )
 pyenv install ${PY_V}
 pyenv global ${PY_V}
 
