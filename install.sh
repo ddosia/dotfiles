@@ -5,7 +5,7 @@ function ubuntu_install {
     echo ""
     ubuntu_dev_essentials_install
     echo ""
-    ubuntu_pyenv_install
+    ubuntu_py_install
     echo ""
     ubuntu_terraform_install
     echo ""
@@ -23,10 +23,17 @@ function ubuntu_dev_essentials_install {
 
 
 ################
-### pyenv
-function ubuntu_pyenv_install {
+### Python
+function ubuntu_py_install {
     echo "Please read pyenv installation notes on https://github.com/pyenv/pyenv"
     sudo apt install --no-install-recommends make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+
+    PY_V=$( pyenv install --list | grep -v - | grep "[[:space:]]\+3\.[[:digit:]]\+\.[[:digit:]]\+$" | tail -1 )
+    pyenv install ${PY_V}
+    pyenv global ${PY_V}
+
+    python -m pip install -U pip
+    python -m pip install -U -r requirements.txt
 }
 ###
 ################
@@ -63,17 +70,5 @@ case "$(uname -s)" in
     Linux*) ubuntu_install;;
 esac
 
-################
-### Python
-
-PY_V=$( pyenv install --list | grep -v - | grep "[[:space:]]\+3\.[[:digit:]]\+\.[[:digit:]]\+$" | tail -1 )
-pyenv install ${PY_V}
-pyenv global ${PY_V}
-
-python -m pip install -U pip
-python -m pip install -U -r requirements.txt
-
-###
-################
 
 ./install.fs.sh
