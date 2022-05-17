@@ -73,16 +73,15 @@ case "$(uname -s)" in
 esac
 
 ################
-### common install
+### Python
+
 PY_V=$( pyenv install --list | grep -v - | grep "[[:space:]]\+3\.[[:digit:]]\+\.[[:digit:]]\+$" | tail -1 )
 pyenv install ${PY_V}
 pyenv global ${PY_V}
 
 python -m pip install -U pip
-python -m pip install -U matplotlib
-python -m pip install -U pandas
-python -m pip install -U jupyter
-python -m pip install -U pipenv
+python -m pip install -U -r requirements.txt
+
 ###
 ################
 
