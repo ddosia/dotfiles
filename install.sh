@@ -7,8 +7,6 @@ function ubuntu_install {
     echo ""
     ubuntu_pyenv_install
     echo ""
-    sudo apt install awscli
-    echo ""
     ubuntu_terraform_install
     echo ""
     ubuntu_docker_install
@@ -40,13 +38,6 @@ function ubuntu_terraform_install {
     tfenv use latest
 }
 
-# function ubuntu_terraform_install {
-#     echo "Please read terraform installation notes on https://learn.hashicorp.com/tutorials/terraform/install-cli"
-#     sudo curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
-#     sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
-#     sudo apt-get update && sudo apt-get install terraform packer
-#     terraform -install-autocomplete
-# }
 ###
 ################
 
