@@ -42,3 +42,6 @@ eval "$(pyenv init -)"
 
 ## terraform
 PATH="$HOME/.tfenv/bin:$PATH"
+
+## erlang
+. ~/devel/erlang/runtime/activate

@@ -14,6 +14,8 @@ function ubuntu_install {
     ubuntu_docker_install
     echo ""
     ubuntu_k8_install
+    echo ""
+    ubuntu_erl_install
 }
 
 ################
@@ -101,9 +103,23 @@ function ubuntu_docker_install {
 ###
 ################
 
+################
+### erlang
+function ubuntu_erl_install {
+    sudo apt install xsltproc fop libxml2-utils # need to build erl docs
+    kerl update releases
+    OTP_VER=$( kerl list releases | tail -1 | grep -v rc )
+    kerl build $OTP_VER $OTP_VER
+    kerl install $OTP_VER ~/devel/erlang/runtime/$OTP_VER
+    ln -s ~/devel/erlang/runtime/$OTP_VER/activate ~/devel/erlang/runtime/activate
+}
+###
+################
+
+./install.fs.sh
+
 case "$(uname -s)" in
     Linux*) ubuntu_install;;
 esac
 
 
-./install.fs.sh
