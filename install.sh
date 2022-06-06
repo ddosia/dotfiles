@@ -16,6 +16,8 @@ function ubuntu_install {
     ubuntu_k8_install
     echo ""
     ubuntu_erl_install
+    echo ""
+    ubuntu_keybase_install
 }
 
 ################
@@ -112,6 +114,15 @@ function ubuntu_erl_install {
     kerl build $OTP_VER $OTP_VER
     kerl install $OTP_VER ~/devel/erlang/runtime/$OTP_VER
     ln -s ~/devel/erlang/runtime/$OTP_VER/activate ~/devel/erlang/runtime/activate
+}
+###
+################
+
+################
+### keybase
+function ubuntu_keybase_install {
+    curl --remote-name https://prerelease.keybase.io/keybase_amd64.deb --output-dir /tmp
+    sudo apt install /tmp/keybase_amd64.deb
 }
 ###
 ################
