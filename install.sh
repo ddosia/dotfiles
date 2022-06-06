@@ -12,6 +12,8 @@ function ubuntu_install {
     ubuntu_terraform_install
     echo ""
     ubuntu_docker_install
+    echo ""
+    ubuntu_k8_install
 }
 
 ################
@@ -63,6 +65,20 @@ function ubuntu_js_install {
 function ubuntu_terraform_install {
     tfenv install latest
     tfenv use latest
+}
+###
+################
+
+################
+### K8
+function ubuntu_k8_install {
+    # https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
+    sudo apt install apt-transport-https ca-certificates curl
+    sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+    sudo apt-get update
+    sudo apt-get install -y kubelet kubeadm kubectl
+    sudo apt-mark hold kubelet kubeadm kubectl
 }
 ###
 ################
