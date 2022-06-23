@@ -18,6 +18,8 @@ function ubuntu_install {
     ubuntu_erl_install
     echo ""
     ubuntu_keybase_install
+    echo ""
+    ubuntu_github_install
 }
 
 ################
@@ -123,6 +125,18 @@ function ubuntu_erl_install {
 function ubuntu_keybase_install {
     curl --remote-name https://prerelease.keybase.io/keybase_amd64.deb --output-dir /tmp
     sudo apt install /tmp/keybase_amd64.deb
+}
+###
+################
+
+################
+### github
+function ubuntu_github_install {
+    curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
+    sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+    sudo apt update
+    sudo apt install gh
 }
 ###
 ################
