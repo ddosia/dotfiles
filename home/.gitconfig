@@ -16,3 +16,5 @@
     glog = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 [pull]
     ff = only
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
