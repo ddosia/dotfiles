@@ -17,6 +17,8 @@ function ubuntu_install {
     echo ""
     ubuntu_erl_install
     echo ""
+    ubuntu_elixir_install
+    echo ""
     ubuntu_keybase_install
     echo ""
     ubuntu_github_install
@@ -112,10 +114,22 @@ function ubuntu_docker_install {
 function ubuntu_erl_install {
     sudo apt install xsltproc fop libxml2-utils # need to build erl docs
     kerl update releases
-    OTP_VER=$( kerl list releases | tail -1 | grep -v rc )
+    OTP_VER=$( kerl list releases | grep -v rc | tail -1 )
     kerl build $OTP_VER $OTP_VER
     kerl install $OTP_VER ~/devel/erlang/runtime/$OTP_VER
     ln -s ~/devel/erlang/runtime/$OTP_VER/activate ~/devel/erlang/runtime/activate
+}
+###
+################
+
+################
+### elixir
+function ubuntu_elixir_install {
+    curl -sSL https://raw.githubusercontent.com/taylor/kiex/master/install | bash -s
+    source "$HOME/.kiex/scripts/kiex"
+    EX_VER=$( kiex list known | grep -v rc | tail -1 )
+    kiex install $EX_VER
+    kiex default $EX_VER
 }
 ###
 ################
