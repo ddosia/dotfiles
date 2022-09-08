@@ -22,6 +22,8 @@ function ubuntu_install {
     ubuntu_keybase_install
     echo ""
     ubuntu_github_install
+    echo ""
+    ubuntu_aws_install
 }
 
 ################
@@ -151,6 +153,16 @@ function ubuntu_github_install {
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
     sudo apt update
     sudo apt install gh
+}
+###
+################
+
+################
+### AWS
+function ubuntu_aws_install {
+    ## session manager plugin
+    curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "/tmp/session-manager-plugin.deb"
+    sudo dpkg -i /tmp/session-manager-plugin.deb
 }
 ###
 ################
