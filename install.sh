@@ -29,18 +29,21 @@ function ubuntu_install {
 ################
 ### dev essentials
 function ubuntu_dev_essentials_install {
-    sudo apt install build-essential autoconf automake gdb libffi-dev zlib1g-dev libssl-dev
-    sudo apt install git tmux vim htop colordiff jq net-tools thefuck inotify-tools
+    sudo apt install build-essential autoconf automake make gdb gcc g++ \
+        libffi-dev zlib1g-dev libssl-dev \
+        git tmux vim htop colordiff jq net-tools thefuck inotify-tools
 }
 ###
 ################
-
 
 ################
 ### Python
 function ubuntu_py_install {
     echo "Please read pyenv installation notes on https://github.com/pyenv/pyenv"
-    sudo apt install --no-install-recommends make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+    sudo apt install --no-install-recommends \
+        libssl-dev zlib1g-dev libbz2-dev \
+        libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev xz-utils \
+        tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
 
     PY_V=$( pyenv install --list | grep -v - | grep "[[:space:]]\+3\.[[:digit:]]\+\.[[:digit:]]\+$" | tail -1 )
     pyenv install ${PY_V}
@@ -55,17 +58,16 @@ function ubuntu_py_install {
 ################
 ### JS
 function ubuntu_js_install {
-    echo "Please read pyenv installation notes on https://github.com/nodesource/distributions"
-    curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-    sudo apt-get install -y nodejs
+    # ASDF nodejs plugin
+    sudo apt-get install -y dirmngr gpg curl gawk
 
-    ## Run `sudo apt-get install -y nodejs` to install Node.js 18.x and npm
-    ## You may also need development tools to build native addons:
-    sudo apt-get install gcc g++ make
-    ## To install the Yarn package manager, run:
-    curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | sudo tee /usr/share/keyrings/yarnkey.gpg >/dev/null
-    echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-    sudo apt-get update && sudo apt-get install yarn
+    asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+    asdf install nodejs latest
+    asdf global nodejs latest
+
+    asdf plugin-add yarn
+    asdf install yarn latest
+    asdf global yarn latest
 }
 ###
 ################
@@ -174,5 +176,3 @@ function ubuntu_aws_install {
 case "$(uname -s)" in
     Linux*) ubuntu_install;;
 esac
-
-
