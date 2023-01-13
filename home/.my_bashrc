@@ -50,3 +50,7 @@ PATH="$HOME/.tfenv/bin:$PATH"
 test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"
 
 eval $(thefuck --alias)
+
+## ASDF
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
