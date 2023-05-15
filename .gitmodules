@@ -61,3 +61,15 @@
 [submodule "home/.asdf"]
 	path = home/.asdf
 	url = https://github.com/asdf-vm/asdf.git
+[submodule "home/.vim/bundle/coc-tsserver"]
+	path = home/.vim/bundle/coc-tsserver
+	url = https://github.com/neoclide/coc-tsserver.git
+[submodule "home/.vim/bundle/coc.nvim"]
+	path = home/.vim/bundle/coc.nvim
+	url = https://github.com/neoclide/coc.nvim.git
+[submodule "home/.vim/bundle/coc-eslint"]
+	path = home/.vim/bundle/coc-eslint
+	url = https://github.com/neoclide/coc-eslint.git
+[submodule "home/.vim/bundle/coc-prettier"]
+	path = home/.vim/bundle/coc-prettier
+	url = https://github.com/neoclide/coc-prettier.git
