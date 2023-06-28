@@ -132,6 +132,7 @@ function ubuntu_elixir_install {
     asdf global elixir latest
     mix local.hex --if-missing
     mix local.rebar --if-missing
+    mix archive.install hex phx_new --force
 }
 ###
 ################
