@@ -127,11 +127,9 @@ function ubuntu_erl_install {
 ################
 ### elixir
 function ubuntu_elixir_install {
-    curl -sSL https://raw.githubusercontent.com/taylor/kiex/master/install | bash -s
-    source "$HOME/.kiex/scripts/kiex"
-    EX_VER=$( kiex list known | grep -v rc | tail -1 )
-    kiex install $EX_VER
-    kiex default $EX_VER
+    asdf plugin add elixir
+    asdf install elixir latest
+    asdf global elixir latest
     # mix local.hex
     # mix local.rebar --force
 }

@@ -43,9 +43,6 @@ eval "$(pyenv init -)"
 ## terraform
 PATH="$HOME/.tfenv/bin:$PATH"
 
-## elixir
-test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"
-
 eval $(thefuck --alias)
 
 ## ASDF
