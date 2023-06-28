@@ -130,8 +130,8 @@ function ubuntu_elixir_install {
     asdf plugin add elixir
     asdf install elixir latest
     asdf global elixir latest
-    # mix local.hex
-    # mix local.rebar --force
+    mix local.hex --if-missing
+    mix local.rebar --if-missing
 }
 ###
 ################
