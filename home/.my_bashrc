@@ -43,9 +43,6 @@ eval "$(pyenv init -)"
 ## terraform
 PATH="$HOME/.tfenv/bin:$PATH"
 
-## erlang
-. ~/devel/erlang/runtime/activate
-
 ## elixir
 test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"
 

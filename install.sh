@@ -117,11 +117,9 @@ function ubuntu_docker_install {
 ### erlang
 function ubuntu_erl_install {
     sudo apt install xsltproc fop libxml2-utils # need to build erl docs
-    kerl update releases
-    OTP_VER=$( kerl list releases | grep -v rc | tail -1 )
-    kerl build $OTP_VER $OTP_VER
-    kerl install $OTP_VER ~/devel/erlang/runtime/$OTP_VER
-    ln -s ~/devel/erlang/runtime/$OTP_VER/activate ~/devel/erlang/runtime/activate
+    asdf plugin add erlang
+    asdf install erlang latest
+    asdf global erlang latest
 }
 ###
 ################
