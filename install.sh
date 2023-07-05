@@ -5,17 +5,13 @@ function ubuntu_install {
     echo ""
     ubuntu_dev_essentials_install
     echo ""
+    ubuntu_asdf_install
+    echo ""
     ubuntu_py_install
-    echo ""
-    ubuntu_js_install
-    echo ""
-    ubuntu_terraform_install
     echo ""
     ubuntu_docker_install
     echo ""
     ubuntu_k8_install
-    echo ""
-    ubuntu_erl_install
     echo ""
     ubuntu_elixir_install
     echo ""
@@ -24,14 +20,25 @@ function ubuntu_install {
     ubuntu_github_install
     echo ""
     ubuntu_aws_install
+    echo ""
+    ubuntu_do_install
 }
 
 ################
 ### dev essentials
 function ubuntu_dev_essentials_install {
-    sudo apt install build-essential autoconf automake make gdb gcc g++ \
+    sudo apt install --no-install-recommends \
+        build-essential autoconf automake make gdb gcc g++ \
         libffi-dev zlib1g-dev libssl-dev \
-        git tmux vim htop colordiff jq net-tools thefuck inotify-tools
+        git tmux vim htop colordiff jq net-tools thefuck inotify-tools \
+        `# nodejs` \
+        dirmngr gpg curl gawk
+        `# erlang` \
+        xsltproc fop libxml2-utils
+        `# python` \
+        libssl-dev zlib1g-dev libbz2-dev \
+        libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev xz-utils \
+        tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
 }
 ###
 ################
@@ -39,16 +46,6 @@ function ubuntu_dev_essentials_install {
 ################
 ### Python
 function ubuntu_py_install {
-    echo "Please read pyenv installation notes on https://github.com/pyenv/pyenv"
-    sudo apt install --no-install-recommends \
-        libssl-dev zlib1g-dev libbz2-dev \
-        libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev xz-utils \
-        tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
-
-    PY_V=$( pyenv install --list | grep -v - | grep "[[:space:]]\+3\.[[:digit:]]\+\.[[:digit:]]\+$" | tail -1 )
-    pyenv install ${PY_V}
-    pyenv global ${PY_V}
-
     python -m pip install -U pip
     python -m pip install -U -r requirements.txt
 }
@@ -56,27 +53,17 @@ function ubuntu_py_install {
 ################
 
 ################
-### JS
-function ubuntu_js_install {
-    # ASDF nodejs plugin
-    sudo apt-get install -y dirmngr gpg curl gawk
-
-    asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
-    asdf install nodejs latest
-    asdf global nodejs latest
-
-    asdf plugin-add yarn
-    asdf install yarn latest
-    asdf global yarn latest
-}
-###
-################
-
-################
-### terraform
-function ubuntu_terraform_install {
-    tfenv install latest
-    tfenv use latest
+### asdf
+# most of the tools are defined in home/.tool-versions
+function ubuntu_asdf_install {
+    tools=$( cat home/.tool-versions | cut -d' ' -f1 | grep "^[^\#]" )
+    for t in $tools; do
+        asdf plugin add $t
+    done
+    cd ./home && asdf install && cd -;
+    for t in $tools; do
+        asdf global $t latest
+    done
 }
 ###
 ################
@@ -114,22 +101,8 @@ function ubuntu_docker_install {
 ################
 
 ################
-### erlang
-function ubuntu_erl_install {
-    sudo apt install xsltproc fop libxml2-utils # need to build erl docs
-    asdf plugin add erlang
-    asdf install erlang latest
-    asdf global erlang latest
-}
-###
-################
-
-################
 ### elixir
 function ubuntu_elixir_install {
-    asdf plugin add elixir
-    asdf install elixir latest
-    asdf global elixir latest
     mix local.hex --if-missing
     mix local.rebar --if-missing
     mix archive.install hex phx_new --force
@@ -164,6 +137,15 @@ function ubuntu_aws_install {
     ## session manager plugin
     curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "/tmp/session-manager-plugin.deb"
     sudo dpkg -i /tmp/session-manager-plugin.deb
+}
+###
+################
+
+################
+### DigitalOcean
+function ubuntu_do_install {
+    # https://docs.digitalocean.com/reference/doctl/how-to/install/
+    sudo snap install doctl
 }
 ###
 ################
