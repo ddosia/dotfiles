@@ -48,6 +48,7 @@ function ubuntu_dev_essentials_install {
 function ubuntu_py_install {
     python -m pip install -U pip
     python -m pip install -U -r requirements.txt
+    asdf reshim python
 }
 ###
 ################
