@@ -1,5 +1,6 @@
 python latest
 terraform latest
+packer latest
 nodejs latest
 yarn latest
 erlang latest
