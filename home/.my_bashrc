@@ -40,3 +40,5 @@ eval $(thefuck --alias)
 ## ASDF
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
+
+eval "$(direnv hook bash)"
