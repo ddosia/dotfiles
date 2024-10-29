@@ -1,8 +1,8 @@
-python latest
-terraform latest
-packer latest
-nodejs latest
-yarn latest
-erlang latest
-elixir latest
-awscli latest
+python 3.13.0t
+terraform 1.9.8
+packer 1.11.2
+nodejs 23.1.0
+yarn 1.22.22
+erlang 27.1.2
+elixir 1.17.3-otp-27
+awscli 2.18.16

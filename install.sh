@@ -33,13 +33,16 @@ function ubuntu_dev_essentials_install {
         git tmux vim htop colordiff jq net-tools thefuck inotify-tools \
         sshuttle direnv \
         `# nodejs` \
-        dirmngr gpg curl gawk
+        dirmngr gpg curl gawk \
         `# erlang` \
-        xsltproc fop libxml2-utils
+        xsltproc fop libxml2-utils libncurses-dev \
         `# python` \
         libssl-dev zlib1g-dev libbz2-dev \
         libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev xz-utils \
-        tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+        tk-dev libxml2-dev libxmlsec1-dev libffi-dev lzma lzma-dev liblzma-dev \
+        cargo `# required for some deps from requirements.txt` \
+        `# ####` \
+        gnome-shell-pomodoro
 }
 ###
 ################
