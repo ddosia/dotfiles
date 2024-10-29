@@ -4,13 +4,13 @@ runtime bundle/vim-pathogen/autoload/pathogen.vim
 
 execute pathogen#infect()
 syntax on
-set nocompatible              " be iMproved
+set nocompatible 
 filetype plugin indent on
 
 
 " General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set scrolloff=999       " focus mode like in Writer app http://www.iawriter.com/
+set scrolloff=999
 set colorcolumn=80
 set cursorline
 
@@ -54,11 +54,7 @@ nmap <C-h> gT
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:solarized_termcolors=256
 set background=dark
-try
-    colorscheme solarized
-catch /^Vim\%((\a\+)\)\=:E185/
-    echo "Solarized theme not found. Run :Helptags"
-endtry
+colorscheme solarized
 
 try
     call togglebg#map("<Leader>b")
@@ -70,28 +66,15 @@ endtry
 " LightLine
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set noshowmode
-
-
-" FuzzyFinder
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:fuf_modesDisable = []
-let g:fuf_mrufile_maxItem = 400
-let g:fuf_mrucmd_maxItem = 400
-nnoremap <silent> sk     :FufCoverageFile<CR>
-nnoremap <silent> sq     :FufQuickfix<CR>
-nnoremap <silent> sy     :FufLine<CR>
-
-
-" GitGutter
-set updatetime=100 " 100 ms. Default is 4s
+set laststatus=2
 
 
 " Erlang
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-erlang-omnicomplete
 let g:erlang_completion_preview_help = 0
-set cot-=preview
-
+"set cot-=preview
+set cot+=preview
 
 " Python
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

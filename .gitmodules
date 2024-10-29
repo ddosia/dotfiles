@@ -73,3 +73,6 @@
 [submodule "home/.vim/bundle/coc-prettier"]
 	path = home/.vim/bundle/coc-prettier
 	url = https://github.com/neoclide/coc-prettier.git
+[submodule "home/.vim/bundle/coc-json"]
+	path = home/.vim/bundle/coc-json
+	url = git@github.com:neoclide/coc-json.git
