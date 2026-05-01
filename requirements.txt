@@ -1,4 +1,4 @@
-flake8>=4
+flake8>=7.3.0
 matplotlib>=3.5
 numpy>=1
 pipenv>=2022.5.2
