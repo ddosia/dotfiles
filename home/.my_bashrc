@@ -31,10 +31,7 @@ fi
 
 PATH=$PATH:$HOME/devel/bin
 
-eval $(thefuck --alias)
-
-## ASDF
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
+## mise
+eval "$(mise activate bash)"
 
 eval "$(direnv hook bash)"

@@ -1,0 +1,11 @@
+[tools]
+python = "latest"
+terraform = "latest"
+packer = "latest"
+nodejs = "latest"
+erlang = "29.1.1"
+elixir = "1.20.4-otp-29"
+aws = "latest"
+uv = "latest"
+"pypi:flake8" = "latest"
+"pypi:ansible" = "latest"

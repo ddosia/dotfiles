@@ -37,30 +37,15 @@
 [submodule ".vim/bundle/vim-eunuch"]
 	path = home/.vim/bundle/vim-eunuch
 	url = https://github.com/tpope/vim-eunuch.git
-[submodule ".pyenv"]
-	path = home/.pyenv
-	url = https://github.com/pyenv/pyenv.git
 [submodule ".vim/bundle/vim-pathogen"]
 	path = home/.vim/bundle/vim-pathogen
 	url = https://github.com/tpope/vim-pathogen.git
-[submodule "devel/erlang/kerl"]
-	path = home/devel/erlang/kerl
-	url = https://github.com/kerl/kerl.git
-[submodule "devel/erlang/rebar3"]
-	path = home/devel/erlang/rebar3
-	url = https://github.com/erlang/rebar3.git
-[submodule ".tfenv"]
-	path = home/.tfenv
-	url = https://github.com/tfutils/tfenv.git
 [submodule "home/.vim/bundle/vim-elixir"]
 	path = home/.vim/bundle/vim-elixir
 	url = https://github.com/elixir-editors/vim-elixir
 [submodule "home/.vim/bundle/vim-javascript"]
 	path = home/.vim/bundle/vim-javascript
 	url = https://github.com/pangloss/vim-javascript.git
-[submodule "home/.asdf"]
-	path = home/.asdf
-	url = https://github.com/asdf-vm/asdf.git
 [submodule "home/.vim/bundle/coc-tsserver"]
 	path = home/.vim/bundle/coc-tsserver
 	url = https://github.com/neoclide/coc-tsserver.git
