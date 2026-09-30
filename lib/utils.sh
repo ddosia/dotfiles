@@ -24,7 +24,16 @@ os_name () {
         . /etc/os-release
         to_lower $NAME
     else
-        uname -s
+        to_lower $(uname -s)
     fi
+}
+
+# appends $line to $file if not already present, leaving the rest of the
+# file (e.g. Ubuntu's distro-provided ~/.bashrc content) untouched
+ensure_line () {
+    local file=$1
+    local line=$2
+    touch "$file"
+    grep -qxF "$line" "$file" || echo "$line" >> "$file"
 }
 

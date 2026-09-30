@@ -31,7 +31,10 @@ fi
 
 PATH=$PATH:$HOME/devel/bin
 
+case "$(uname -s)" in
+    Darwin) [[ -f "$HOME/.my_bashrc.darwin" ]] && . "$HOME/.my_bashrc.darwin" ;;
+    Linux)  [[ -f "$HOME/.my_bashrc.ubuntu" ]] && . "$HOME/.my_bashrc.ubuntu" ;;
+esac
+
 ## mise
 eval "$(mise activate bash)"
-
-eval "$(direnv hook bash)"

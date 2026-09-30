@@ -5,6 +5,8 @@
     email = ddosia@gmail.com
 [github]
     user = ddosia
+[includeIf "gitdir:~/work/"]
+    path = ~/work/.gitconfig-work
 [color]
     branch = auto
     diff = auto

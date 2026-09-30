@@ -32,7 +32,6 @@ function dev_essentials_install {
         build-essential autoconf automake make gdb gcc g++ \
         libffi-dev zlib1g-dev libssl-dev \
         git tmux vim htop colordiff jq net-tools inotify-tools \
-        sshuttle direnv \
         `# nodejs` \
         dirmngr gpg curl gawk \
         `# erlang` \

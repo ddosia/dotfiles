@@ -1,0 +1,37 @@
+## Docker Desktop CLI helpers
+[[ -d "$HOME/.docker/bin" ]] && PATH="$PATH:$HOME/.docker/bin"
+
+## Homebrew
+if [[ -x /opt/homebrew/bin/brew ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ -x /usr/local/bin/brew ]]; then
+    eval "$(/usr/local/bin/brew shellenv)"
+fi
+
+# GNU tools installed via Brewfile ship as gnubin dirs instead of
+# overwriting macOS's BSD tools of the same name -- put those ahead of
+# PATH so the GNU versions are what actually run.
+if [[ -n "${HOMEBREW_PREFIX:-}" ]]; then
+    for gnu_pkg in coreutils findutils gnu-sed gnu-tar gnu-indent grep gawk libtool gnu-time make; do
+        gnubin="$HOMEBREW_PREFIX/opt/$gnu_pkg/libexec/gnubin"
+        [[ -d "$gnubin" ]] && PATH="$gnubin:$PATH"
+    done
+
+    # keg-only tools with no gnubin dir, just their own bin/ (kept out of
+    # the main PATH by brew because macOS ships an older/different version)
+    for keg_only_pkg in gnu-getopt curl sqlite; do
+        keg_bin="$HOMEBREW_PREFIX/opt/$keg_only_pkg/bin"
+        [[ -d "$keg_bin" ]] && PATH="$keg_bin:$PATH"
+    done
+
+    # curl/sqlite/zlib are keg-only -- point the compiler/linker at them
+    # for anything built locally against these libs
+    export LDFLAGS="-L$HOMEBREW_PREFIX/opt/curl/lib -L$HOMEBREW_PREFIX/opt/sqlite/lib -L$HOMEBREW_PREFIX/opt/zlib/lib"
+    export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/curl/include -I$HOMEBREW_PREFIX/opt/sqlite/include -I$HOMEBREW_PREFIX/opt/zlib/include"
+
+    [[ -r "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ]] && . "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
+fi
+
+## VS Code CLI
+[[ -d "/Applications/Visual Studio Code.app/Contents/Resources/app/bin" ]] && \
+    PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
