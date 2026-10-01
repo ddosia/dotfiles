@@ -65,6 +65,14 @@ function mise_install {
 ################
 
 ################
+### VS Code
+function vscode_install {
+    sudo snap install code --classic
+}
+###
+################
+
+################
 ### docker
 function docker_install {
     sudo apt-get install -y docker.io
@@ -97,4 +105,6 @@ if [[ -z "${DOTFILES_SKIP_SERVICES:-}" ]]; then
     docker_install
     echo ""
     do_install
+    echo ""
+    vscode_install
 fi

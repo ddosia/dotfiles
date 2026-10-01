@@ -11,3 +11,8 @@ ensure_line "$HOME/.bashrc" '[[ -f "$HOME/.my_bashrc" ]] && . "$HOME/.my_bashrc"
 ensure_line "$HOME/.bash_profile" '[[ -f "$HOME/.bashrc" ]] && . "$HOME/.bashrc"'
 
 include "bin/$(os_name).sh" || exit 666
+
+command_exists code
+while read -r extension; do
+    code --install-extension "$extension"
+done < "$(base_dir)/vscode-extensions.txt"

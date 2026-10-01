@@ -19,6 +19,10 @@ to_upper () {
     echo $@ | tr '[:lower:]' '[:upper:]'
 }
 
+command_exists () {
+    command -v "$1" >/dev/null 2>&1 || exit_error "Missing required command: '$1'" 1
+}
+
 os_name () {
     if [[ -f /etc/os-release ]]; then
         . /etc/os-release

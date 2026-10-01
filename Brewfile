@@ -32,4 +32,8 @@ brew "libtool"
 
 brew "mise"
 
+# k8s
+brew "kubernetes-cli"
+
 cask "docker-desktop"
+cask "visual-studio-code"

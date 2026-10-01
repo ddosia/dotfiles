@@ -1,0 +1,4 @@
+anthropic.claude-code
+bradlc.vscode-tailwindcss
+expertlsp.expert
+phoenixframework.phoenix
