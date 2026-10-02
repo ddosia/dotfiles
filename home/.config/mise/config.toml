@@ -10,3 +10,8 @@ uv = "latest"
 ollama = "latest"
 "pypi:flake8" = "latest"
 "pypi:ansible" = "latest"
+
+# helm/minikube: VS Code's Kubernetes extension depends on these and otherwise
+# downloads its own private copies outside mise/brew -- see ~/.vs-kubernetes/tools
+helm = "latest"
+minikube = "latest"

@@ -2,3 +2,5 @@ anthropic.claude-code
 bradlc.vscode-tailwindcss
 expertlsp.expert
 phoenixframework.phoenix
+ms-azuretools.vscode-containers
+ms-kubernetes-tools.vscode-kubernetes-tools
