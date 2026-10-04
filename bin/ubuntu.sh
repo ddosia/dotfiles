@@ -73,6 +73,29 @@ function vscode_install {
 ################
 
 ################
+### Antigravity
+function ai_antigravity {
+    # Antigravity IDE (v2.5+ standalone IDE based on VS Code)
+    if ! snap list antigravity-ide-snap >/dev/null 2>&1; then
+        sudo snap install antigravity-ide-snap --classic
+    fi
+    sudo snap alias antigravity-ide-snap.antigravity-ide antigravity-ide 2>/dev/null || true
+    sudo snap alias antigravity-ide-snap.antigravity-ide antigravity 2>/dev/null || true
+
+    if [[ -x /snap/bin/antigravity-ide-snap.antigravity-ide ]]; then
+        sudo ln -sf /snap/bin/antigravity-ide-snap.antigravity-ide /usr/local/bin/antigravity-ide
+        sudo ln -sf /snap/bin/antigravity-ide-snap.antigravity-ide /usr/local/bin/antigravity
+    fi
+
+    ## cli version has to be installed separately
+    curl -fsSL https://antigravity.google/cli/install.sh | bash
+}
+###
+################
+
+
+
+################
 ### docker
 function docker_install {
     sudo apt-get install -y docker.io
@@ -107,4 +130,6 @@ if [[ -z "${DOTFILES_SKIP_SERVICES:-}" ]]; then
     do_install
     echo ""
     vscode_install
+    echo ""
+    ai_antigravity
 fi
