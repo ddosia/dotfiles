@@ -29,7 +29,7 @@ if [[ -f "$HOME/.ssh/environment" ]]; then
     fi
 fi
 
-PATH=$PATH:$HOME/devel/bin
+PATH=$PATH:$HOME/devel/bin:$HOME/.local/bin
 
 eval $(thefuck --alias)
 

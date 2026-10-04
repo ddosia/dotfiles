@@ -32,7 +32,7 @@ function dev_essentials_install {
         build-essential autoconf automake make gdb gcc g++ \
         libffi-dev zlib1g-dev libssl-dev \
         git tmux vim htop colordiff jq net-tools thefuck inotify-tools \
-        sshuttle direnv gnome-shell-pomodoro \
+        sshuttle direnv \
         `# nodejs` \
         dirmngr gpg curl gawk \
         `# erlang` \
@@ -40,7 +40,8 @@ function dev_essentials_install {
         `# python` \
         libssl-dev zlib1g-dev libbz2-dev \
         libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev xz-utils \
-        tk-dev libxml2-dev libxmlsec1-dev libffi-dev lzma lzma-dev liblzma-dev \
+        tk-dev libxml2-dev libxmlsec1-dev libffi-dev lzma liblzma-dev \
+        python3 python-is-python3 \
         cargo `# required for some deps from requirements.txt`
 }
 ###
@@ -81,7 +82,7 @@ function asdf_install {
 function k8_install {
     K8S_VER=v1.31
     # https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
-    sudo apt install apt-transport-https ca-certificates curl
+    sudo apt install apt-transport-https ca-certificates curl gnupg
 
     add_apt_repo \
         k8s \
@@ -151,11 +152,51 @@ function do_install {
 ###
 ###############
 #
+
+################
+### AI
+
+function ai_antigravity {
+    curl -fsSL https://us-central1-apt.pkg.dev/doc/repo-signing-key.gpg |
+        \ sudo gpg --dearmor --yes -o /etc/apt/keyrings/antigravity-repo-key.gpg
+
+    echo "deb [signed-by=/etc/apt/keyrings/antigravity-repo-key.gpg] https://us-central1-apt.pkg.dev/projects/antigravity-auto-updater-dev/ antigravity-debian main" | \
+        sudo tee /etc/apt/sources.list.d/google_antigravity.list
+
+    sudo apt update && sudo apt install -y antigravity
+
+    ## cli version has to be installed separately
+    curl -fsSL https://antigravity.google/cli/install.sh | bash
+}
+
+function ai_install {
+    echo ""
+    # https://ollama.com/download
+    #curl -fsSL https://ollama.com/install.sh | sh
+
+#    # https://claude.com/product/claude-code
+#    curl -fsSL https://claude.ai/install.sh | bash
+}
+###
+###############
+
+################
+### Google Cloud
+function google_install {
+    # https://docs.cloud.google.com/sdk/docs/install-sdk#deb
+    curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o /usr/share/keyrings/cloud.google.gpg
+    echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+
+    sudo apt-get update && sudo apt-get install google-cloud-cli
+}
+###
+###############
+
 sudo apt-get update;
 echo ""
 dev_essentials_install
 echo ""
-sdf_install
+asdf_install
 echo ""
 py_install
 echo ""
@@ -168,3 +209,5 @@ echo ""
 aws_install
 echo ""
 do_install
+echo ""
+ai_install

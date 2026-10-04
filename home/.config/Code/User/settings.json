@@ -1,0 +1,15 @@
+{
+  "editor.linkedEditing": true,
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "liveServer.settings.donotShowInfoMsg": true,
+  "security.workspace.trust.untrustedFiles": "open",
+  "explorer.confirmDelete": false,
+
+  "typescript.suggest.paths": false,
+  "javascript.suggest.paths": false,
+  "git.openRepositoryInParentFolders": "always",
+  "geminicodeassist.project": "pristine-smithy-k5p9w",
+  "diffEditor.codeLens": true
+}
